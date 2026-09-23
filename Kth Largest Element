@@ -1,0 +1,61 @@
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        mergeSort(nums, 0, nums.length - 1);
+        return nums[nums.length - k];
+    }
+
+    // merge sort function
+    private void mergeSort(int[] arr, int left, int right) {
+        if (left < right) {
+            int mid = left + (right - left) / 2;
+
+            // Sort left half and right half
+            mergeSort(arr, left, mid);
+            mergeSort(arr, mid + 1, right);
+
+            // Merge the two halves
+            merge(arr, left, mid, right);
+        }
+    }
+
+    // Merge 
+    private void merge(int[] arr, int left, int mid, int right) {
+        int m = mid - left + 1;
+        int n = right - mid;
+
+
+        int[] leftArr = new int[m];
+        int[] rightArr = new int[n];
+
+        for (int i = 0; i < m; i++) leftArr[i] = arr[left + i];
+        for (int j = 0; j < n; j++) rightArr[j] = arr[mid + 1 + j];
+
+        // merge from starter code
+        int index1 = 0;
+        int index2 = 0;
+        int index3 = left;
+
+        while (index1 < m && index2 < n) {
+            if (leftArr[index1] <= rightArr[index2]) {
+                arr[index3] = leftArr[index1];
+                index1++;
+            } else {
+                arr[index3] = rightArr[index2];
+                index2++;
+            }
+            index3++;
+        }
+
+        while (index1 < m) {
+            arr[index3] = leftArr[index1];
+            index1++;
+            index3++;
+        }
+
+        while (index2 < n) {
+            arr[index3] = rightArr[index2];
+            index2++;
+            index3++;
+        }
+    }
+}
