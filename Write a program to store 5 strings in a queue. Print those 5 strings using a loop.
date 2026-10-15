@@ -1,0 +1,22 @@
+import java.util.Deque;
+import java.util.ArrayDeque;
+
+class Main {
+    public static void main(String[] args) {
+
+        Deque<String> names = new ArrayDeque<>();
+
+        names.add("John");
+        names.add("Mike");
+        names.add("David");
+        names.add("James");
+        names.add("Chris");
+
+        for (String name : names) {
+            System.out.println(name);
+
+        }
+
+    }
+
+}
