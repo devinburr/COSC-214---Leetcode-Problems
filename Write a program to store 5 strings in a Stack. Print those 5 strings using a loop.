@@ -1,0 +1,18 @@
+import java.util.Stack;
+
+class Main {
+    public static void main(String[] args) {
+
+        Stack<String> names = new Stack<>();
+
+        names.push("John");
+        names.push("Mike");
+        names.push("David");
+        names.push("James");
+        names.push("Chris");
+
+        for (int i = 0; i < names.size(); i++) {
+            System.out.println(names.get(i));
+        }
+    }
+}
